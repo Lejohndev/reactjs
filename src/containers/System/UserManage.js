@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { GetAllUser } from '../../services/userServices';
 class UserManage extends Component {
 
     state = {
 
     }
 
-    componentDidMount() {
-
+    async componentDidMount() {
+        let response = await GetAllUser('ALL');
+        console.log('get user form node.js: ', response)
     }
+
+    /**
+    life cycle
+    *run compunent
+    1.run construct->init state
+    2.did mout(set state)
+    render
+    */
+
 
 
     render() {

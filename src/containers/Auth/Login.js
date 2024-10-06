@@ -147,4 +147,11 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login); export const path = {
+    HOME: '/',
+    HOMEPAGE: /'home',/,
+    LOGIN: '/login',
+    LOG_OUT: '/logout',
+    SYSTEM: '/system'
+};
+
