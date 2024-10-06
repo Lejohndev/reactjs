@@ -13,7 +13,7 @@ class Specialty extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 4,
-            slidesToScroll: 2
+            slidesToScroll: 1
         };
         return (
             <div className="section-specialty">

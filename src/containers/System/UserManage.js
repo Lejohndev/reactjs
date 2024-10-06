@@ -4,13 +4,24 @@ import { connect } from 'react-redux';
 import { GetAllUser } from '../../services/userServices';
 class UserManage extends Component {
 
-    state = {
+    constructor(props) {
+        super(props);
+        this.state = {
 
+        }
     }
 
     async componentDidMount() {
         let response = await GetAllUser('ALL');
-        console.log('get user form node.js: ', response)
+        if (response && response.errCode == 0) {
+            this.setState({
+                arrUsers: response.users
+            }, () => {
+                console.log('check state user 1', this.state.arrUsers);
+            })
+            console.log('checkstate user 1', this.state.arrUsers);
+
+        }
     }
 
     /**
@@ -24,6 +35,7 @@ class UserManage extends Component {
 
 
     render() {
+        console.log('check render', this.state)
         return (
             <div className="text-center">Manage users</div>
         );
