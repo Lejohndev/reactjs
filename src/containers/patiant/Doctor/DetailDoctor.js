@@ -4,33 +4,37 @@ import { withRouter } from 'react-router-dom';
 
 
 // Dữ liệu bác sĩ (giả định từ API hoặc state)
+
 const doctorData = [
     {
         DoctorId: 1,
         name: "Nguyễn Văn Long",
         title: "Giáo sư, Tiến sĩ",
-        specialty: "Chuyên khoa Nhi",
+        specialty: "Nhi khoa",
         experience: "Hơn 20 năm kinh nghiệm",
         description: "Giáo sư Nguyễn Văn Long là chuyên gia đầu ngành về Nhi khoa với nhiều nghiên cứu và đóng góp quan trọng trong lĩnh vực chăm sóc sức khỏe trẻ em.",
-        availableTimes: ["08:00 AM", "10:00 AM", "01:00 PM", "03:00 PM"]
+        availableTimes: ["08:00 AM", "10:00 AM", "01:00 PM", "03:00 PM"],
+        hospital: "Bệnh viện Đại học y"
     },
     {
         DoctorId: 2,
         name: "Trần Thị Minh",
         title: "Bác sĩ chuyên khoa II",
-        specialty: "Nhi khoa",
+        specialty: "Tiêu hóa",
         experience: "15 năm kinh nghiệm",
         description: "Bác sĩ Trần Thị Minh có nhiều năm kinh nghiệm trong điều trị các bệnh lý trẻ em và được biết đến với sự tận tâm, chu đáo trong công việc.",
-        availableTimes: ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"]
+        availableTimes: ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"],
+        hospital: "Bệnh viện 108",
     },
     {
         DoctorId: 3,
         name: "Lê Quốc Hùng",
         title: "Tiến sĩ",
-        specialty: "Tim mạch",
+        specialty: "Thần kinh",
         experience: "10 năm kinh nghiệm",
         description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
-        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"]
+        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
+        hospital: "Bệnh viện 108",
     },
     {
         DoctorId: 4,
@@ -39,22 +43,26 @@ const doctorData = [
         specialty: "Tim mạch",
         experience: "10 năm kinh nghiệm",
         description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
-        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"]
+        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
+        hospital: "Bệnh viện đa khoa Hà Nội"
     },
     {
         DoctorId: 5,
         name: "Lê Quốc Hùng",
         title: "Tiến sĩ",
-        specialty: "Tim mạch",
+        specialty: "Cơ xương khớp",
         experience: "10 năm kinh nghiệm",
         description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
-        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"]
+        availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
+        hospital: "Bệnh viện đa khoa Hà Nội"
     },
+
 ];
 
 const DetailDoctor = ({ match }) => {
     const { DoctorId } = match.params;
     const doctor = doctorData.find(doc => doc.DoctorId === parseInt(DoctorId, 10));
+
 
     // State để quản lý thông tin đặt lịch
     const [appointment, setAppointment] = useState({
@@ -139,3 +147,4 @@ const DetailDoctor = ({ match }) => {
 };
 
 export default withRouter(DetailDoctor);
+export { doctorData };

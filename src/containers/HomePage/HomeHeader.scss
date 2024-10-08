@@ -24,15 +24,14 @@
 
                 height: 100%;
                 width: 100%;
-                cursor: pointer;
 
 
             }
 
             i {
                 font-size: 25px;
-                coler: grey;
-                cursor: pointer;
+                color: grey;
+
 
             }
         }
@@ -59,14 +58,21 @@
             justify-content: end;
             align-items: center;
 
-            div {
+            .sign-in {
+                padding: 10px 15px;
+                border: none;
+                outline: none;
+                display: flex;
+                background: #ebebeb;
+                color: black;
                 cursor: pointer;
+
+
+                &:hover {
+                    color: #fff;
+                    background: #f7d800;
+                }
             }
-
-
-
-
-
         }
 
     }

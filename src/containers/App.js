@@ -16,7 +16,9 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/Homepage.js'
 import CustomScrollbars from "../components/CustomScrollbars.js";
 import DetailDoctor from './patiant/Doctor/DetailDoctor.js';
-
+import Doctor from './HomePage/section/Doctor.js';
+import ClinicviewHeader from './patiant/clinic/ClinicviewHeader.js';
+import DetailSpecialty from './patiant/SpecialtyDT/DetailSpecialty.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -53,7 +55,10 @@ class App extends Component {
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
+                                    <Route exact path="/" component={Doctor} />
                                     <Route path="/doctor/:DoctorId" component={DetailDoctor} />
+                                    <Route path="/Header/:HeaderId" component={ClinicviewHeader} />
+                                    <Route path="/specialty/:SpecialtyId" component={DetailSpecialty} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>
@@ -83,5 +88,8 @@ const mapDispatchToProps = dispatch => {
     return {
     };
 };
+
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
