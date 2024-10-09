@@ -55,15 +55,13 @@ class Login extends Component {
 
                 }
             }
-            console.log(error.response, error.response);
+            console.log('e.message', error.response);
             // this.setState({
             //     errMessage: e.message
             // })
         }
 
     }
-
-
     handleShowHidePassword = () => {
         this.setState({
             isShowPassword: !this.state.isShowPassword
@@ -149,7 +147,7 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login); export const path = {
     HOME: '/',
-    HOMEPAGE: /'home',/,
+    HOMEPAGE: /'home'/,
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system'
