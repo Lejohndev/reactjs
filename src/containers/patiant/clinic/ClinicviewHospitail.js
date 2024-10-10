@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { doctorData } from '../Doctor/DetailDoctor';
 
 // Dữ liệu bác sĩ (giả định từ API hoặc state)
-const ClinicviewHeader = ({ history }) => {
+const ClinicviewHospitail = ({ history }) => {
     const [selectedSpecialty, setSelectedSpecialty] = useState('');
     const [selectedHospital, setSelectedHospital] = useState('');
     const [isTopDoctor, setIsTopDoctor] = useState(false);
@@ -30,18 +30,18 @@ const ClinicviewHeader = ({ history }) => {
     return (
         <div className="doctor-search-container">
             <h2>Tìm kiếm bác sĩ</h2>
-            {/* Tìm kiếm theo chuyên khoa */}
+
+            {/* Tìm kiếm theo bệnh viện/phòng khám */}
             <div>
-                <label htmlFor="specialty">Chuyên khoa:</label>
-                <select id="specialty" value={selectedSpecialty} onChange={(e) => setSelectedSpecialty(e.target.value)}>
+                <label htmlFor="hospital">Bệnh viện/Phòng khám:</label>
+                <select id="hospital" value={selectedHospital} onChange={(e) => setSelectedHospital(e.target.value)}>
                     <option value="">Tất cả</option>
-                    <option value="Nhi khoa">Nhi khoa</option>
-                    <option value="Tim mạch">Tim mạch</option>
-                    <option value="tiêu hóa">Tiêu hóa</option>
-                    <option value="Thần kinh">Thần kinh</option>
-                    <option value="Cơ xương khớp">Cơ xương khớp</option>
+                    <option value="Bệnh viện 108">Bệnh viện 108</option>
+                    <option value="Bệnh viện đa khoa Hà Nội">Bệnh viện đa khoa Hà Nội</option>
+                    <option value="Bệnh viện Đại học y">Bệnh viện Đại học y</option>
                 </select>
             </div>
+
             {/* Lọc bác sĩ giỏi */}
             <div>
                 <label>
@@ -71,4 +71,4 @@ const ClinicviewHeader = ({ history }) => {
     );
 };
 
-export default withRouter(ClinicviewHeader);
+export default withRouter(ClinicviewHospitail);

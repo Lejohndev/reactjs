@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Doctor.scss';
-import * as actions from '../../../store/actions';
 import { withRouter } from 'react-router';
 class Doctor extends Component {
     constructor(prop) {
@@ -35,29 +34,24 @@ class Doctor extends Component {
                         <Slider {...settings}>
                             <div className="img1">
                                 <div className="bg-img1" onClick={() => this.handleviewDetailDoctor(1)}></div>
-                                <div>Bác sĩ
-                                    Nguyễn Thị Lưu Phương</div>
-                                <span>Tim mạch</span>
+                                <div>Bác sĩ Nguyễn Thị Lưu Phương</div>
+
                             </div>
                             <div className="img1">
                                 <div className="bg-img2" onClick={() => this.handleviewDetailDoctor(2)}></div>
-                                <div>Bác sĩ
-                                    Nguyễn Vắn Long</div>
+                                <div>Bác sĩ Nguyễn Vắn Long</div>
                             </div>
                             <div className="img1">
                                 <div className="bg-img3" onClick={() => this.handleviewDetailDoctor(3)}></div>
-                                <div>Bác sĩ
-                                    Lê Minh Châu</div>
+                                <div>Bác sĩ Lê Minh Châu</div>
                             </div>
                             <div className="img1">
                                 <div className="bg-img4" onClick={() => this.handleviewDetailDoctor(4)}></div>
-                                <div>Bác sĩ
-                                    Nguyễn Thị Lưu Phương</div>
+                                <div>Bác sĩ Nguyễn Thị Lưu Phương</div>
                             </div>
                             <div className="img1">
                                 <div className="bg-img5" onClick={() => this.handleviewDetailDoctor(5)}></div>
-                                <div>Bác sĩ
-                                    Bùi Văn Khoa</div>
+                                <div>Bác sĩ Lê Quốc Hùng</div>
                             </div>
                         </Slider>
                     </div>

@@ -19,6 +19,7 @@ import DetailDoctor from './patiant/Doctor/DetailDoctor.js';
 import Doctor from './HomePage/section/Doctor.js';
 import ClinicviewHeader from './patiant/clinic/ClinicviewHeader.js';
 import DetailSpecialty from './patiant/SpecialtyDT/DetailSpecialty.js';
+import ClinicviewHospitail from './patiant/clinic/ClinicviewHospitail.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -59,6 +60,7 @@ class App extends Component {
                                     <Route path="/doctor/:DoctorId" component={DetailDoctor} />
                                     <Route path="/Header/:HeaderId" component={ClinicviewHeader} />
                                     <Route path="/specialty/:SpecialtyId" component={DetailSpecialty} />
+                                    <Route path="/Hospital/:hospitailId" component={ClinicviewHospitail} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>

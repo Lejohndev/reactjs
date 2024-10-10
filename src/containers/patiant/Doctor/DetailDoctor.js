@@ -16,7 +16,7 @@ const doctorData = [
         title: "Bác sĩ",
         specialty: "Nhi khoa",
         experience: "Nguyễn Thị Lưu Phương",
-        description: "Giáo sư Nguyễn Văn Long là chuyên gia đầu ngành về Nhi khoa với nhiều nghiên cứu và đóng góp quan trọng trong lĩnh vực chăm sóc sức khỏe trẻ em.",
+        description: "Bác sĩ Nguyễn Thị Lưu Phương là chuyên gia đầu ngành về Nhi khoa với nhiều nghiên cứu và đóng góp quan trọng trong lĩnh vực chăm sóc sức khỏe trẻ em.",
         availableTimes: ["08:00 AM", "10:00 AM", "01:00 PM", "03:00 PM"],
         hospital: "Bệnh viện Đại học y",
         image: bs5
@@ -34,22 +34,22 @@ const doctorData = [
     },
     {
         DoctorId: 3,
-        name: "Lê Quốc Hùng",
-        title: "Tiến sĩ",
+        name: "Lê Minh Châu",
+        title: "Bác sĩ",
         specialty: "Thần kinh",
         experience: "10 năm kinh nghiệm",
-        description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
+        description: "Bác sĩ Lê Minh Châu chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
         availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
         hospital: "Bệnh viện 108",
         image: bs2
     },
     {
         DoctorId: 4,
-        name: "Lê Quốc Hùng",
-        title: "Tiến sĩ",
+        name: "Nguyễn Thị Lưu Phương",
+        title: "Bác sĩ",
         specialty: "Tim mạch",
         experience: "10 năm kinh nghiệm",
-        description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
+        description: "Bác sĩ Nguyễn Thị Lưu Phương chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
         availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
         hospital: "Bệnh viện đa khoa Hà Nội",
         image: bs3
@@ -57,10 +57,10 @@ const doctorData = [
     {
         DoctorId: 5,
         name: "Lê Quốc Hùng",
-        title: "Tiến sĩ",
+        title: "Bác sĩ",
         specialty: "Cơ xương khớp",
         experience: "10 năm kinh nghiệm",
-        description: "Tiến sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
+        description: "Bác sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
         availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
         hospital: "Bệnh viện đa khoa Hà Nội",
         image: bs4
@@ -106,7 +106,6 @@ const DetailDoctor = ({ match }) => {
                 <div className="doctor-info">
                     <div >
                         <img src={doctor.image} className="doctor-image" /></div>
-
                     <h1>{`${doctor.title} ${doctor.name}`}</h1>
                     <h3>Chuyên khoa: {doctor.specialty}</h3>
                     <p>Kinh nghiệm: {doctor.experience}</p>

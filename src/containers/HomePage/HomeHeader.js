@@ -9,8 +9,17 @@ class HomeHeader extends Component {
             arrHomeHeader: []
         }
     }
-    handleviewDetailHomeHeader = (HeaderId) => {
+    handleviewDetailHomeHeaderSpecialty = (HeaderId) => {
         this.props.history.push(`/Header/${HeaderId}`)
+    }
+    handleviewDetailHomeHeaderselectHospitail = (hospitailId) => {
+        this.props.history.push(`/Hospital/${hospitailId}`)
+    }
+    handleviewDetailHomeHeaderselectDoctor = (selectdoctorId) => {
+        this.props.history.push(`/selectdoctor/${selectdoctorId}`)
+    }
+    handleviewDetailHomeHeaderSupport = (supportId) => {
+        this.props.history.push(`/support/${supportId}`)
     }
     // handleviewDetailfin = (Id) => {
     //     this.props.history.push(`/Header/${HeaderId1}`)
@@ -27,26 +36,26 @@ class HomeHeader extends Component {
                             <div className="Header-logo"></div>
                         </div>
                         <div className="Center-content">
-                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeader(1)}>
+                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeaderSpecialty(1)}>
                                 <div><b>Chuyên khoa</b></div>
                                 <div className="subs-title">Tìm bác sĩ theo chuyên khoa</div>
                             </div>
-                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeader(2)}>
+                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeaderselectHospitail(1)}>
                                 <div><b>Cơ sở y tế</b></div>
                                 <div className="subs-title">Chọn bệnh viện phòng khám</div>
                             </div>
-                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeader(3)}>
+                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeaderselectDoctor(1)}>
                                 <div><b>Bác sĩ</b></div>
                                 <div className="subs-title">Chọn bác sĩ giỏi</div>
                             </div>
-                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeader(4)}>
+                            <div className="child-content" onClick={() => this.handleviewDetailHomeHeaderSupport(1)}>
                                 <div><b>Gói Khám</b></div>
                                 <div className="subs-title">Khám sức khỏe tổng quát</div>
                             </div>
                         </div>
                         <div className="Right-content">
                             <div className="sign-in">Đăng kí</div>
-                            <div className="support"><i class="fas fa-question-circle"></i>Hỗ trợ</div>
+                            <div className="support" onClick={() => this.handleviewDetailHomeHeaderSupport(1)}><i class="fas fa-question-circle"></i>Hỗ trợ</div>
 
 
                         </div>
