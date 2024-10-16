@@ -15,7 +15,7 @@ class HomePage extends Component {
                 <Doctor />
                 <About />
 
-                <div style={{ height: '200px' }}></div>
+                <div style={{ height: '' }}></div>
             </div>
 
         );

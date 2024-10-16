@@ -2,7 +2,6 @@ import { logger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createStateSyncMiddleware } from 'redux-state-sync';
 import { persistStore } from 'redux-persist';
@@ -16,7 +15,6 @@ let isDevelopment = environment === "development";
 //hide redux logs
 isDevelopment = false;
 
-
 export const history = createBrowserHistory({ basename: process.env.REACT_APP_ROUTER_BASE_NAME });
 
 const reduxStateSyncConfig = {
@@ -27,18 +25,19 @@ const reduxStateSyncConfig = {
 
 const rootReducer = createRootReducer(history);
 const middleware = [
-    routerMiddleware(history),
+    routerMiddleware(history),  // Đã kết hợp routerMiddleware vào applyMiddleware
     thunkMiddleware,
     createStateSyncMiddleware(reduxStateSyncConfig),
-]
+];
 if (isDevelopment) middleware.push(logger);
 
+// Sử dụng composeEnhancers để kết hợp Redux DevTools và applyMiddleware
 const composeEnhancers = (isDevelopment && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
 const reduxStore = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(...middleware)),
-)
+    composeEnhancers(applyMiddleware(...middleware))  // Kết hợp tất cả middleware
+);
 
 export const dispatch = reduxStore.dispatch;
 

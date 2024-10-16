@@ -21,6 +21,9 @@ class HomeHeader extends Component {
     handleviewDetailHomeHeaderSupport = (supportId) => {
         this.props.history.push(`/support/${supportId}`)
     }
+    handleviewDetailHomeHeaderinfo = (profileId) => {
+        this.props.history.push(`/profile/${profileId}`)
+    }
     // handleviewDetailfin = (Id) => {
     //     this.props.history.push(`/Header/${HeaderId1}`)
     // }
@@ -54,7 +57,7 @@ class HomeHeader extends Component {
                             </div>
                         </div>
                         <div className="Right-content">
-                            <div className="sign-in">Đăng kí</div>
+                            <div className="sign-in" onClick={() => this.handleviewDetailHomeHeaderinfo(1)}>Hồ sơ</div>
                             <div className="support" onClick={() => this.handleviewDetailHomeHeaderSupport(1)}><i class="fas fa-question-circle"></i>Hỗ trợ</div>
 
 

@@ -21,7 +21,7 @@ class Doctor extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 4,
-            slidesToScroll: 1
+            slidesToScroll: 2
         };
         return (
             <div className="section-doctor">

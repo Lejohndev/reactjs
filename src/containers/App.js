@@ -20,6 +20,7 @@ import Doctor from './HomePage/section/Doctor.js';
 import ClinicviewHeader from './patiant/clinic/ClinicviewHeader.js';
 import DetailSpecialty from './patiant/SpecialtyDT/DetailSpecialty.js';
 import ClinicviewHospitail from './patiant/clinic/ClinicviewHospitail.js';
+import Userprofile from './patiant/clinic/Userprofile.js'
 class App extends Component {
 
     handlePersistorState = () => {
@@ -48,6 +49,7 @@ class App extends Component {
 
                         {this.props.isLoggedIn && <Header />}
 
+
                         <div className="content-container">
                             <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
 
@@ -61,6 +63,8 @@ class App extends Component {
                                     <Route path="/Header/:HeaderId" component={ClinicviewHeader} />
                                     <Route path="/specialty/:SpecialtyId" component={DetailSpecialty} />
                                     <Route path="/Hospital/:hospitailId" component={ClinicviewHospitail} />
+                                    <Route path="/selectdoctor/:selectdoctorId" component={ClinicviewHospitail} />
+                                    <Route path="/profile/:profileId" component={Userprofile} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>

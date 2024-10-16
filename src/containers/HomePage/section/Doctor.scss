@@ -1,8 +1,8 @@
 .section-doctor {
 
 
-    height: 370px;
-    background: #e2e2e2;
+    height: 350px;
+    background-image: linear-gradient(180deg, #BEC3EB, #49BCE2);
 
     .doctor-container {
         margin: 0 50px;
@@ -17,6 +17,7 @@
             .title1-section {
                 font-size: 24px;
                 font-weight: 600;
+
             }
 
             .btn1-section {
@@ -48,6 +49,13 @@
 
             .img1 {
                 padding: 10px;
+                text-align: center;
+                color: #ebebeb;
+                font-weight: 200;
+                font-size: 18px;
+                padding-top: 5px;
+
+
 
                 .bg-img1 {
                     width: 200px;
@@ -58,6 +66,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .bg-img2 {
@@ -69,6 +79,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .bg-img3 {
@@ -80,6 +92,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .bg-img4 {
@@ -91,6 +105,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
                 .bg-img5 {
@@ -102,6 +118,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router-dom';
 import './DetailDoctor.scss';
 
 import bs1 from '../../../assets/DoctorIMG/bs1.jpg';
@@ -15,10 +15,10 @@ const doctorData = [
         name: "Nguyễn Thị Lưu Phương",
         title: "Bác sĩ",
         specialty: "Nhi khoa",
-        experience: "Nguyễn Thị Lưu Phương",
+        experience: "10 Năm kinh nghiệm",
         description: "Bác sĩ Nguyễn Thị Lưu Phương là chuyên gia đầu ngành về Nhi khoa với nhiều nghiên cứu và đóng góp quan trọng trong lĩnh vực chăm sóc sức khỏe trẻ em.",
         availableTimes: ["08:00 AM", "10:00 AM", "01:00 PM", "03:00 PM"],
-        hospital: "Bệnh viện Đại học y",
+        hospital: "Bệnh viện Đại học Y Hà Nội",
         image: bs5
     },
     {
@@ -27,7 +27,7 @@ const doctorData = [
         title: "Bác sĩ",
         specialty: "Tiêu hóa",
         experience: "15 năm kinh nghiệm",
-        description: "Bác sĩ Nguyễn Văn Long có nhiều năm kinh nghiệm trong điều trị các bệnh lý trẻ em và được biết đến với sự tận tâm, chu đáo trong công việc.",
+        description: "Bác sĩ Nguyễn Văn Long có nhiều năm kinh nghiệm trong điều trị các bệnh lý về dạ dày và tiêu hoá, ông được biết đến với sự tận tâm, chu đáo trong công việc.",
         availableTimes: ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"],
         hospital: "Bệnh viện 108",
         image: bs1
@@ -38,7 +38,7 @@ const doctorData = [
         title: "Bác sĩ",
         specialty: "Thần kinh",
         experience: "10 năm kinh nghiệm",
-        description: "Bác sĩ Lê Minh Châu chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
+        description: "Bác sĩ Lê Minh Châu chuyên điều trị các bệnh lý về thần kinh, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
         availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
         hospital: "Bệnh viện 108",
         image: bs2
@@ -60,7 +60,7 @@ const doctorData = [
         title: "Bác sĩ",
         specialty: "Cơ xương khớp",
         experience: "10 năm kinh nghiệm",
-        description: "Bác sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý về tim mạch, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
+        description: "Bác sĩ Lê Quốc Hùng chuyên điều trị các bệnh lý cơ xương khớp, với nhiều công trình nghiên cứu được công nhận ở cấp quốc tế.",
         availableTimes: ["07:00 AM", "09:00 AM", "12:00 PM", "03:00 PM"],
         hospital: "Bệnh viện đa khoa Hà Nội",
         image: bs4
@@ -71,13 +71,14 @@ const doctorData = [
 const DetailDoctor = ({ match }) => {
     const { DoctorId } = match.params;
     const doctor = doctorData.find(doc => doc.DoctorId === parseInt(DoctorId, 10));
+    const history = useHistory();
 
     // State để quản lý thông tin đặt lịch
     const [appointment, setAppointment] = useState({
         name: '',
         date: '',
         time: '',
-        PhoneNumber: '',
+        PhoneNumber: ''
     });
 
     // Xử lý khi có thay đổi trong form
@@ -89,23 +90,44 @@ const DetailDoctor = ({ match }) => {
         });
     };
 
+    // Hàm lưu lịch hẹn vào localStorage
+    const handleRegister = () => {
+        const patientData = {
+            name: appointment.name,
+            date: appointment.date,
+            time: appointment.time,
+            PhoneNumber: appointment.PhoneNumber,
+            doctorName: doctor.name,
+        };
+
+        // Lấy các lịch hẹn hiện có từ localStorage
+        const storedAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+        // Thêm lịch hẹn mới vào danh sách
+        storedAppointments.push(patientData);
+        // Lưu danh sách lịch hẹn mới vào localStorage
+        localStorage.setItem('appointments', JSON.stringify(storedAppointments));
+
+        // Chuyển hướng đến trang hồ sơ người dùng sau khi đăng ký
+        history.push('/profile/1');
+    };
+
     // Xử lý khi gửi form
     const handleSubmit = (e) => {
         e.preventDefault();
+        handleRegister();
         alert(`Đặt lịch thành công cho ${appointment.name} vào ngày ${appointment.date} lúc ${appointment.time} với bác sĩ ${doctor.name}`);
-
     };
 
     // Nếu không tìm thấy bác sĩ
     if (!doctor) {
         return <div>Bác sĩ không tồn tại!</div>;
     }
+
     return (
         <div className='bg-doctor'>
             <div className="doctor-detail">
                 <div className="doctor-info">
-                    <div >
-                        <img src={doctor.image} className="doctor-image" /></div>
+                    <img src={doctor.image} className="doctor-image" alt={doctor.name} />
                     <h1>{`${doctor.title} ${doctor.name}`}</h1>
                     <h3>Chuyên khoa: {doctor.specialty}</h3>
                     <p>Kinh nghiệm: {doctor.experience}</p>
@@ -140,10 +162,10 @@ const DetailDoctor = ({ match }) => {
                         <div>
                             <label htmlFor="PhoneNumber">Số điện thoại:</label>
                             <input
-                                type="string"
+                                type="tel"
                                 id="PhoneNumber"
                                 name="PhoneNumber"
-                                value={appointment.string}
+                                value={appointment.PhoneNumber}
                                 onChange={handleInputChange}
                                 required
                             />
@@ -171,7 +193,6 @@ const DetailDoctor = ({ match }) => {
             </div>
         </div>
     );
-
 };
 
 export default withRouter(DetailDoctor);
