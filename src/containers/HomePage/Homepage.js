@@ -1,36 +1,40 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
 import Specialty from './section/Specialty';
 import Doctor from './section/Doctor';
-import About from './section/About'
+import About from './section/About';
+import ChatButton from './ChatButton';
+import ChatBox from './ChatBox';
 
-class HomePage extends Component {
+const HomePage = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
-    render() {
-        return (
-            <div>
-                <HomeHeader />
-                <Specialty />
-                <Doctor />
-                <About />
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
 
-                <div style={{ height: '' }}></div>
-            </div>
+  return (
+    <div>
+      <HomeHeader />
+      <Specialty />
+      <Doctor />
+      <About />
+      <ChatButton onClick={toggleChat} />
+      {isChatOpen && <ChatBox onClose={toggleChat} />}
+      <div style={{ height: '' }}></div>
+    </div>
+  );
+};
 
-        );
-    }
-
-}
 const mapStateToProps = state => {
-    return {
-        isLoggedIn: state.user.isLoggedIn
-    };
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
