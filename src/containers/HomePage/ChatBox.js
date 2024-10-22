@@ -1,47 +1,37 @@
-import React, { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
-import './ChatBox.scss';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const ChatBox = ({ onClose }) => {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
+const ChatBox = ({ isLoggedIn, userInfo }) => {
+    useEffect(() => {
+        (function(d, m) {
+            var kommunicateSettings = {
+                "appId": "781afa0eac45914ae444af25d1c32f3e",
+                "popupWidget": true,
+                "automaticChatOpenOnNavigation": true
+            };
+            
+            if (isLoggedIn && userInfo) {
+                kommunicateSettings.userId = userInfo.email;
+                kommunicateSettings.userName = userInfo.lastName;
+            }
+            
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0];
+            h.appendChild(s);
+            window.kommunicate = m;
+            m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+    }, [isLoggedIn, userInfo]);
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (inputMessage.trim() !== '') {
-      setMessages([...messages, { text: inputMessage, sender: 'user' }]);
-      setInputMessage('');
-    }
-  };
-
-  return (
-    <div className="chat-box">
-      <div className="chat-header">
-        <h3>Chat với chúng tôi</h3>
-        <button className="close-button" onClick={onClose}>
-          <FaTimes />
-        </button>
-      </div>
-      <div className="chat-content">
-        <div className="messages">
-          {messages.map((msg, index) => (
-            <div key={index} className={`message ${msg.sender}`}>
-              {msg.text}
-            </div>
-          ))}
-        </div>
-        <form onSubmit={handleSendMessage}>
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            placeholder="Nhập tin nhắn..."
-          />
-          <button type="submit">Gửi</button>
-        </form>
-      </div>
-    </div>
-  );
+    return null;
 };
 
-export default ChatBox;
+const mapStateToProps = state => ({
+    isLoggedIn: state.user.isLoggedIn,
+    userInfo: state.user.userInfo
+});
+
+export default connect(mapStateToProps)(ChatBox);

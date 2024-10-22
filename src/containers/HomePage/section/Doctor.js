@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 class Doctor extends Component {
     constructor(prop) {
         super(prop)
-        this.state = {
+          this.state = {
             arrDoctor: []
         }
     }
